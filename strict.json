@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Strict",
+  // https://www.typescriptlang.org/tsconfig
+  "compilerOptions": {
+    // Type Checking
+    "strict": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    // "exactOptionalPropertyTypes": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedParameters": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    // "noPropertyAccessFromIndexSignature": true,
+
+    // Modules
+    "module": "node16",
+    "resolveJsonModule": false, // ESM doesn't yet support JSON modules.
+    "moduleResolution": "node16", // XXX: set to "bundler" for TS 5.x
+    "verbatimModuleSyntax": true, // XXX: turn on for TS 5.x
+
+    // Emit
+    // "noEmit": true,
+    "skipLibCheck": true,
+    "stripInternal": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+
+    // Language and Environment
+    "moduleDetection": "force",
+    "target": "ES2022",
+    "lib": ["DOM", "DOM.Iterable", "ES2022"],
+    "jsx": "react-jsx",
+
+    // Projects
+    "composite": false,
+
+    // Interop Constraints
+    "isolatedModules": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+
+    // JavaScript Support
+    "allowJs": true,
+    "checkJs": true
+  },
+  "exclude": ["node_modules"]
+}

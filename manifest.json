@@ -1,11 +1,11 @@
 {
-    "id": "obsidian-charts",
-    "name": "Obsidian Charts",
-    "version": "3.8.2",
-    "minAppVersion": "0.12.7",
-    "description": "This Plugin lets you create Charts within Obsidian",
-    "author": "phibr0",
-    "authorUrl": "https://github.com/phibr0",
-    "isDesktopOnly": false,
-    "fundingUrl": "https://ko-fi.com/phibr0"
+  "id": "obsidian-chartz",
+  "name": "Obsidian Chartz",
+  "version": "0.0.1",
+  "minAppVersion": "0.12.7",
+  "description": "Create dynamic charts in Obsidian notes using Chart.js for visual data representation.",
+  "author": "mrtnbroder",
+  "authorUrl": "https://github.com/mrtnbroder",
+  "isDesktopOnly": false,
+  "fundingUrl": "https://ko-fi.com/mrtnbroder"
 }

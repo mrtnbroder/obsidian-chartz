@@ -1,10 +1,63 @@
-# Intellij
-*.iml
-.idea
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# npm
+# dependencies
 node_modules
-package-lock.json
+.parcel-cache
+
+# testing
+/coverage
+
+/.idea
+
+# production
+/build
+storybook-static
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.eslintcache
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# build
+.rpt2_cache/
+dist
+.cache
+
+# yalc
+# https://github.com/whitecolor/yalc#keep-it-out-of-git
+.yalc
+yalc.lock
+
+# yarn v2 zero-installs
+.yarn/*
+!.yarn/cache
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+
+*.tsbuildinfo
+
+# turbo
+.turbo
+
+# vscode
+.vscode
+
+# nextjs
+.next
+.swc
+.vercel
+
+# dotenv environment variables file
+.env
 
 # build
 main.js

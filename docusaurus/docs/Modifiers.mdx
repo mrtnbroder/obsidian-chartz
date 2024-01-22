@@ -162,12 +162,12 @@ The `beginAtZero` Modifier is used to force set the Chart to begin at 0. Otherwi
 
 ## `legend` Modifier
 
-The `legend` modifier sets whether or not the legend will be displayed. 
+The `legend` modifier sets whether or not the legend will be displayed.
 
 - Expected: `boolean` (`true` or `false`)
 - Default: `true`
 
-### Example 
+### Example
 
 ````yaml
 ```chart
@@ -193,7 +193,7 @@ Determines where the legend will be displayed.
 
 ## Axes Modifiers
 
-Valid for `bar` and `line` types only. 
+Valid for `bar` and `line` types only.
 
 ### `indexAxis` Modifier
 
@@ -211,17 +211,17 @@ Will change the bar and line graphs to be stacked.
 
 ### Modifiers by Axis
 
-Prepend either the x or y axis to any of these to modify them. 
+Prepend either the x or y axis to any of these to modify them.
 
 #### `Title` Modifier
 
-Use either `xTitle: "Title here"` or `yTitle: "Title here"` to add a Title to any Axis. 
+Use either `xTitle: "Title here"` or `yTitle: "Title here"` to add a Title to any Axis.
 
-#### `Reverse` Modifier 
+#### `Reverse` Modifier
 
-Can reverse the axis it is applied to 
+Can reverse the axis it is applied to
 
-- Expected: `boolean` (`true` or `false`) 
+- Expected: `boolean` (`true` or `false`)
 - Default: `false`
 
 ````yaml
@@ -241,10 +241,9 @@ Can reverse the axis it is applied to
 
 ### `Min` and `Max` Modifiers
 
-Can set the min and max of the respecitve axis (like: `xMax` or `yMin`). `Min` will override beginAtZero. 
-Use `rMax` to set the max for radar and polar area charts.
+Can set the min and max of the respecitve axis (like: `xMax` or `yMin`). `Min` will override beginAtZero. Use `rMax` to set the max for radar and polar area charts.
 
-- Expected: `int` 
+- Expected: `int`
 
 ### `Display` and `TickDisplay` Modifiers
 
@@ -255,7 +254,7 @@ Determines whether the axis (`Display`) or the ticks of the axis (`TickDisplay`)
 
 ## `time` Modifier
 
-If you use e.g. dates on your X Axis, you can set the `time` modifier to automatically format them. 
+If you use e.g. dates on your X Axis, you can set the `time` modifier to automatically format them.
 
 - Expected: `string` (`day`, `week`, `month`, `year`, etc.)
 

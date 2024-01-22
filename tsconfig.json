@@ -1,15 +1,11 @@
 {
-  "extends": "@tsconfig/svelte/tsconfig.json",
-
+  "extends": "./strict.json",
   "include": ["src/**/*"],
   "exclude": ["node_modules/*"],
   "compilerOptions": {
     "types": ["node", "svelte"],
-    "baseUrl": ".",
-    "paths": {
-      "src": ["src/*"]
-    },
+    "baseUrl": "./src",
     "alwaysStrict": true,
-    "noImplicitAny": true
-  }
+    "noImplicitAny": true,
+  },
 }

@@ -1,40 +1,43 @@
 <script lang="ts" defer>
-  import { debounce, Editor, parseYaml } from "obsidian";
-  import type Renderer from "../chartRenderer";
-  import { createEventDispatcher } from "svelte";
-  import CollapsibleSection from './CollapsibleSection.svelte'
-  import { renderError } from "src/util";
-  import type { DataField } from "src/constants/settingsConstants";
-import type { Chart } from "chart.js";
+  import { debounce, Editor, parseYaml } from "obsidian"
+  import type Renderer from "../chartRenderer.js"
+  import { createEventDispatcher } from "svelte"
+  import CollapsibleSection from "./CollapsibleSection.svelte"
+  import { renderError } from "../util.js"
+  import type { DataField } from "../constants/settingsConstants.js"
+  import type { Chart } from "chart.js"
 
-  export let editor: Editor;
-  export let renderer: Renderer;
+  export let editor: Editor
+  export let renderer: Renderer
 
-  const dispatch = createEventDispatcher();
+  const dispatch = createEventDispatcher()
 
-  let chartType: string = "bar";
-  let lastChart: Chart = null;
-  let tension: number = 20;
-  let width: number = 80;
-  let fill: boolean = false;
-  let labelColors: boolean = false;
-  let startAtZero: boolean = false;
-  let bestFit: boolean = false;
-  let bestFitTitle: string;
-  let bestFitNumber: string = "0";
-  let labels: string = "";
-  let data: DataField[] = [{ dataTitle: "", data: "" }];
-  let chart: string;
-  let previewElement: HTMLDivElement = null;
+  let chartType: string = "bar"
+  let lastChart: Chart = null
+  let tension: number = 20
+  let width: number = 80
+  let fill: boolean = false
+  let labelColors: boolean = false
+  let startAtZero: boolean = false
+  let bestFit: boolean = false
+  let bestFitTitle: string
+  let bestFitNumber: string = "0"
+  let labels: string = ""
+  let data: DataField[] = [{ dataTitle: "", data: "" }]
+  let chart: string
+  let previewElement: HTMLDivElement = null
   const debouncedRenderChart = debounce(
     async (yaml: any, el: HTMLElement) => {
-      if(lastChart) lastChart.destroy();
-      previewElement.lastElementChild?.remove();
-      lastChart = renderer.renderRaw(await renderer.datasetPrep(parseYaml(yaml), el), el);
+      if (lastChart) lastChart.destroy()
+      previewElement.lastElementChild?.remove()
+      lastChart = renderer.renderRaw(
+        await renderer.datasetPrep(parseYaml(yaml), el),
+        el,
+      )
     },
     500,
-    true
-  );
+    true,
+  )
 
   $: chart = `type: ${chartType}
 labels: [${labels}]
@@ -49,25 +52,25 @@ fill: ${fill}
 beginAtZero: ${startAtZero}
 bestFit: ${bestFit}
 bestFitTitle: ${bestFitTitle}
-bestFitNumber: ${bestFitNumber}`;
+bestFitNumber: ${bestFitNumber}`
 
   $: {
     if (previewElement) {
       try {
-        debouncedRenderChart(chart, previewElement);
+        debouncedRenderChart(chart, previewElement)
       } catch (error) {
-        renderError(error, previewElement);
+        renderError(error, previewElement)
       }
     }
   }
 
   function insertChart() {
-    let doc = editor.getDoc();
-    let cursor = doc.getCursor();
-    lastChart.destroy();
+    let doc = editor.getDoc()
+    let cursor = doc.getCursor()
+    lastChart.destroy()
 
-    doc.replaceRange("```chart\n" + chart + "\n```", cursor);
-    dispatch("close");
+    doc.replaceRange("```chart\n" + chart + "\n```", cursor)
+    dispatch("close")
   }
 </script>
 
@@ -208,48 +211,52 @@ bestFitNumber: ${bestFitNumber}`;
         </div>
       </table>
       <hr />
-      <CollapsibleSection headerText={'Line of Best Fit (Line chart only)'} >
-        <hr>
-      <table style="width:100%">
-        <tr>
-          <td class="desc"
-          ><p class="mainDesc">Line of Best Fit</p>
-            <p class="subDesc">Create a line of best fit</p></td
-          ><td class="controlElement"
-        ><input
+      <CollapsibleSection headerText={"Line of Best Fit (Line chart only)"}>
+        <hr />
+        <table style="width:100%">
+          <tr>
+            <td class="desc"
+              ><p class="mainDesc">Line of Best Fit</p>
+              <p class="subDesc">Create a line of best fit</p></td
+            ><td class="controlElement"
+              ><input
                 type="checkbox"
                 class="task-list-item-checkbox"
                 style="width: 16px; height: 16px"
                 bind:checked={bestFit}
-        /></td
-        >
-        </tr>
-        <tr>
-          <td class="desc"
-          ><p class="mainDesc">Best Fit Line ID</p>
-            <p class="subDesc">The line ID used to create the line of best fit</p></td
-          ><td class="controlElement"
-        ><input
+              /></td
+            >
+          </tr>
+          <tr>
+            <td class="desc"
+              ><p class="mainDesc">Best Fit Line ID</p>
+              <p class="subDesc">
+                The line ID used to create the line of best fit
+              </p></td
+            ><td class="controlElement"
+              ><input
                 type="text"
                 placeholder="0"
                 style="width: 26px; height: 32px"
                 bind:value={bestFitNumber}
-        /><br />
-        </tr>
-        <tr>
-          <td class="desc"
-          ><p class="mainDesc">Line of Best Fit Title</p>
-            <p class="subDesc">The title for the line of best fit</p></td
-          ><td class="controlElement">
-          <input
-                  type="text"
-                  placeholder="Line of Best Fit"
-                  style="width: 96px; height: 32px"
-                  bind:value={bestFitTitle}
-          /><br />
-        </tr>
-      </table>
-        </CollapsibleSection>
+              /><br />
+            </td></tr
+          >
+          <tr>
+            <td class="desc"
+              ><p class="mainDesc">Line of Best Fit Title</p>
+              <p class="subDesc">The title for the line of best fit</p></td
+            ><td class="controlElement">
+              <input
+                type="text"
+                placeholder="Line of Best Fit"
+                style="width: 96px; height: 32px"
+                bind:value={bestFitTitle}
+              /><br />
+            </td></tr
+          >
+        </table>
+      </CollapsibleSection>
     </div>
     <div class="chartPreview">
       <div id="preview" bind:this={previewElement} />

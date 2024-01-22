@@ -6,7 +6,7 @@ To use CSS Variables, turn on Theming in this plugin's settings and add variable
 
 ```css
 :root {
-    --chart-color-1: #ff00ff;
-    --chart-color-x: rgb(255,255,255);
+  --chart-color-1: #ff00ff;
+  --chart-color-x: rgb(255, 255, 255);
 }
 ```

@@ -1,0 +1,11 @@
+storybook-static
+dist
+node_modules
+.yarn
+.turbo
+.next
+.swc
+.vercel
+out
+build
+pnpm-lock.yaml
